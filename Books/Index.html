@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>BookLib</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    </head>
+    <body>
+        <div ng-app="booksModule">
+            <div ng-controller="BooksController">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h2>Books filter</h2>
+                            <div class="form-group">
+                                <label for="inputdefault">Book name</label>
+                                <input class="form-control" type="text" ng-model="search.bookName"><br/>
+                                <label for="inputdefault">Author name</label>
+                                <input class="form-control" type="text" ng-model="search.authorName">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h2>Add book</h2>
+                            <div class="form-group">
+                                <label for="inputdefault">Book name</label>
+                                <input class="form-control" type="text" id="bookNameField"><br/>
+                                <label for="inputdefault">Author name</label>
+                                <input class="form-control" type="text" id="authorNameField"><br/>
+                                <button class="btn btn-success" ng-click="addBook();">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Books table</h2>
+            
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Book name</th>
+                                <th>Author name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="book in books | filter:search">
+                                <td>{{ book.bookName }}</td>
+                                <td>{{ book.authorName }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src="scripts/bookscript.js"></script>
+    </body>
+</html>
